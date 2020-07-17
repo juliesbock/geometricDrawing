@@ -36,5 +36,6 @@ canvas {
 
 .drawBtn {
   height: 25px;
-  width: 25px;
+  width: 50px;
+  margin: 5px 3px 3px 3px;
 }

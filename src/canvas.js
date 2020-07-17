@@ -1,102 +1,56 @@
 import {getCoords} from "./tools/util";
 import {drawCircle} from "./tools/circle";
+import {getGridPoints} from "./tools/grid";
+import { dragStartLine, dragLine, dragStopLine} from "./tools/line";
 
 // to keep consistant sizing:
 export const dotDist = 20;
 export const half = dotDist / 2;
 export const ctx = canvas.getContext('2d');
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {  
   const canvas = document.getElementById('canvas');
+  getGridPoints();
+
+  canvas.addEventListener('mousedown', dragStartLine, false);
+  canvas.addEventListener('mousemove', dragLine, false);
+  canvas.addEventListener('mouseup', dragStopLine, false);
+  canvas.addEventListener('mouseleave', dragStopLine, false);
+  canvas.addEventListener('dblclick', drawCircle, false);
+
+  // buttons for line thickness
+  const smallLine = document.getElementById("smallLn");
+  smallLine.addEventListener('click', () =>{
+    ctx.lineWidth = 1;
+  });
+
+  const medLine = document.getElementById("mediumLn");
+  medLine.addEventListener('click', () => {
+    ctx.lineWidth = 3;
+  });
+
+  const largeLine = document.getElementById("largeLn");
+  largeLine.addEventListener('click', () => {
+    ctx.lineWidth = 5;
+  });
+
+  const xLargeLine = document.getElementById("xlargeLn");
+  xLargeLine.addEventListener('click', () => {
+    ctx.lineWidth = 10;
+  });
+
+  //tools
+  const eraser = document.getElementById('eraser');
+  eraser.addEventListener('click', () => {
+    ctx.strokeStyle = 'gray';
+  })
+
+
   // const circleEle = document.getElementById('circle');
   // const lineEle = document.getElementById('line');
 
-
-  //makes array containing all grid points
-  const getGridPoints = () => {
-    const pointsArr = [];
-    
-    for (let x = 0; x < canvas.width; x += dotDist){
-      for (let y = 0; y < canvas.height; y += dotDist) {
-        pointsArr.push([x,y])
-      }  
-    }
-    return pointsArr;
-  }
-
-
-  //points = 2d array with all points on grid
-  const gridPoints = getGridPoints();
-  gridPoints.forEach(pos => {
-    ctx.beginPath();
-    ctx.arc(pos[0], pos[1], .5, 0, 2 * Math.PI, true);
-    
-    ctx.strokeStyle = 'black';
-    ctx.stroke();
-  });
-
-  // window.addEventListener(MouseEvent, ())
-  let dragging = false, dragStartLocation, snapshot;
-
-  // canvas.addEventListener('');
   // circleEle.addEventListener("click", circleClick, true);
   // lineEle.addEventListener("click", lineClick, true);
-
-  
-
-  // const colorfill = (e) => {
-  //   ctx.fill();
-  // }
-
-  const dragStart = (e) => {
-    dragging = true;
-    dragStartLocation = getCoords(e);
-    takeSnapshot();
-  }
-
-  const drag = (e) => {
-    if(dragging){
-      restoreSnapshot();
-      let pos = getCoords(e);
-      drawLine(pos);
-    }
-  }
-
-  const dragStop = (e) => {
-    if (dragging){
-      dragging = false;
-      restoreSnapshot();
-      let pos = getCoords(e);
-      drawLine(pos);
-    }
-  }
-
-  const takeSnapshot = () => {
-    snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  }
-
-  const restoreSnapshot = () => {
-    ctx.putImageData(snapshot,0,0);
-  }
-
-  const drawLine = (pos) => {
-    ctx.beginPath();
-
-    dragStartLocation.x = Math.round(dragStartLocation.x / half) * half;
-    dragStartLocation.y = Math.round(dragStartLocation.y / half) * half;
-    ctx.moveTo(dragStartLocation.x, dragStartLocation.y);
-
-    pos.x = Math.round(pos.x / half) * half;
-    pos.y = Math.round(pos.y / half) * half;
-    ctx.lineTo(pos.x, pos.y);
-    ctx.stroke();
-  }
-
-  canvas.addEventListener('mousedown', dragStart, false);
-  canvas.addEventListener('mousemove', drag, false);
-  canvas.addEventListener('mouseup', dragStop, false);
-  canvas.addEventListener('mouseleave', dragStop, false);
-  canvas.addEventListener('dblclick', drawCircle, false);
 })
 
 

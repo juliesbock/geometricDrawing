@@ -1,4 +1,4 @@
-import { getCoords } from "./util";
+import {getCoords } from "./util";
 import {dotDist, half, ctx} from "../canvas";
 
 export const drawCircle = (e) => {
