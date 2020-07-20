@@ -2,6 +2,7 @@ import {getCoords} from "./tools/util";
 import {drawCircle} from "./tools/circle";
 import {getGridPoints} from "./tools/grid";
 import { dragStartLine, dragLine, dragStopLine} from "./tools/line";
+// import { erase } from './tools/eraser';
 
 // to keep consistant sizing:
 export const dotDist = 20;
@@ -12,12 +13,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('canvas');
   getGridPoints();
 
+  // let mode = 'line';
+
+  // if (mode === 'line') { 
   canvas.addEventListener('mousedown', dragStartLine, false);
   canvas.addEventListener('mousemove', dragLine, false);
   canvas.addEventListener('mouseup', dragStopLine, false);
   canvas.addEventListener('mouseleave', dragStopLine, false);
   canvas.addEventListener('dblclick', drawCircle, false);
+  // }
 
+  // const draw = (e) => {
+  //   switch (mode) {
+  //     case 'line':
+  //       console.log('line drawin')
+  //       dragStartLine(e);
+  //       break;
+  //     case 'eraser':
+  //       erase;
+  //       break;
+  //     default:
+  //       dragStartLine;
+  //       break;
+  //   };
+  // };
+
+  // if (mode === 'eraser') {
+  //   console.log('wooohoo')
+  //   // ctx.strokeStyle = 'whitesmoke';
+  //   // canvas.addEventListener('mousedown', dragStartEraser, false);
+  //   // canvas.addEventListener('mousemove', dragEraser, false);
+  //   // canvas.addEventListener('mouseup', dragStopEraser, false);
+  //   // canvas.addEventListener('mouseleave', dragStopEraser, false);
+  //   // canvas.addEventListener('dblclick', null, false);
+  // }
+
+
+  // TOOLBAR COMMANDS
   // buttons for line thickness
   const smallLine = document.getElementById("smallLn");
   smallLine.addEventListener('click', () =>{
@@ -39,11 +71,56 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.lineWidth = 10;
   });
 
+  // ctx.lineWidth = radius;
+  // const minRad = 0.5;
+  // const maxRad = 100;
+  // const defaultRad = 20;
+  // const interval = 5;
+  // const radSpan = document.getElementById('radval');
+
+  // var setRadius = (newRadius) => {
+  //   if (newRadius < minRad)
+  //     newRadius = minRad
+  //   else if (newRadius > maxRad)
+  //     newRadius = maxRad;
+  //   radius = newRadius;
+  //   context.lineWidth = radius * 2;
+  //   radSpan.innerHTML = radius;
+  // }
+
+  // // Decrease radius of drawing tool
+  // const decRad = document.getElementById('decrad');
+  // decRad.addEventListener('click', () => {
+  //   console.log('minus')
+  //   setRadius(radius - interval);
+  // });
+
+  // // Increase radius of drawing tool
+  // const incRad = document.getElementById('incrad');
+  // incRad.addEventListener('click', () => {
+  //   console.log('plusss')
+
+  //   if (radius % 1 !== 0) {
+  //     setRadius(parseInt(radius) + interval);
+  //   } else {
+  //     setRadius(radius + interval);
+  //   }
+  // });
+
+
   //tools
-  const eraser = document.getElementById('eraser');
-  eraser.addEventListener('click', () => {
-    ctx.strokeStyle = 'gray';
-  })
+  // const eraser = document.getElementById('eraser');
+  // eraser.addEventListener('click', () => {
+  //   mode = 'eraser';
+  //   console.log('erasin')
+  // });
+
+  // const line = document.getElementById('line');
+  // line.addEventListener('click', () => {
+  //   mode = 'line';
+  // });
+
+  
 
 
   // const circleEle = document.getElementById('circle');
@@ -55,67 +132,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // document.addEventListener('load', init);
-
-
-
-
-
-
-
-
-
-
-// just draw - first try
-// document.addEventListener('mousemove', draw);
-// document.addEventListener('mousedown', setPosition);
-// document.addEventListener('mouseenter', setPosition);
-
-
-
-// new position from mouse event
-// function setPosition(e) {
-//   pos.x = e.clientX;
-//   pos.y = e.clientY;
-
-//   //these make it so you can only draw on the grid
-//   pos.x = Math.round(pos.x / dotDist) * dotDist; // rounds to nearest dot
-//   pos.y = Math.round(pos.y / dotDist) * dotDist; // rounds to nearest dot
-// }
-
-// this makes first try work 
-// function draw(e) {
-//   // mouse left button must be pressed
-//   if (e.buttons !== 1) return;
-
-//   ctx.beginPath(); // begin
-
-//   ctx.lineWidth = 1;
-//   ctx.lineCap = 'round';
-//   ctx.strokeStyle = 'blue';
-
-//   ctx.moveTo(pos.x, pos.y); // from
-//   setPosition(e);
-//   ctx.lineTo(pos.x, pos.y); // to
-
-//   ctx.stroke(); // draw it!
-// }
-
-
-// function connectPoints(pi1, pi2) {
-//   let p1 = points[pi1];
-//   let p2 = points[pi2];
-
-//   push();
-//   strokeWeight(5);
-//   line(p1[0], p1[1], p2[0], p2[1]);
-//   pop();
-// }
-
-
-// function displayElastic() {
-//   if (nextPoint <= 0 || nextPoint >= points.length)
-//     return;
-
-//   let pp = points[nextPoint - 1];
-//   line(pp[0], pp[1], mouseX, mouseY);
-// }

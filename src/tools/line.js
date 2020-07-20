@@ -2,12 +2,12 @@ import { getCoords } from "./util";
 import { dotDist, half, ctx } from "../canvas";
 
 let dragging = false;
-let dragStartLocation;
+let dragStartCoords;
 let snapshot;
 
 export const dragStartLine = (e) => {
   dragging = true;
-  dragStartLocation = getCoords(e);
+  dragStartCoords = getCoords(e);
   takeSnapshot();
 }
 
@@ -40,12 +40,14 @@ const restoreSnapshot = () => {
 const drawLine = (pos) => {
   ctx.beginPath();
 
-  dragStartLocation.x = Math.round(dragStartLocation.x / half) * half;
-  dragStartLocation.y = Math.round(dragStartLocation.y / half) * half;
-  ctx.moveTo(dragStartLocation.x, dragStartLocation.y);
+  dragStartCoords.x = Math.round(dragStartCoords.x / half) * half;
+  dragStartCoords.y = Math.round(dragStartCoords.y / half) * half;
+  ctx.moveTo(dragStartCoords.x, dragStartCoords.y);
 
   pos.x = Math.round(pos.x / half) * half;
   pos.y = Math.round(pos.y / half) * half;
   ctx.lineTo(pos.x, pos.y);
-  ctx.stroke();
+  if ((pos.x !== dragStartCoords.x) || (pos.y !== dragStartCoords.y)) ctx.stroke();
 }
+
+
