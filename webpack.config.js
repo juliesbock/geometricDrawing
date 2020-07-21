@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/canvas.js',
   output: {
+    publicPath: "/geometricdrawing/",
     path: path.resolve(__dirname, 'app',),
     filename: './bundle.js'
   },
