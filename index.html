@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doodles</title>
   <link rel="stylesheet" href="./src/stylesheets/index.css">
-  <style type='text/css'>
-    
-  </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400&display=swap" rel="stylesheet">
+    <style type='text/css'></style>
 </head>
 <body>
-  <h1>Geometric Jules</h1>
+  <h1>Geometric Doodles</h1>
   <div class="tool-tabs">
     <div>
-      <p>Click and drag to draw a line <br>
-        Double click to draw a circle</p>
+      <div class="instructions">Click and drag to draw a line <br>
+        Double click to draw a circle</div>
     </div>
     <!-- <div class="tooloption" id="rad">
       Radius
@@ -29,24 +30,33 @@
       <!-- <button type="submit" class='drawBtn' id='line'>Line</button> -->
       <!-- <button type="submit" class='drawBtn' id='circle'>Circle</button> -->
       <!-- <button type="submit" class='drawBtn' id='eraser'>Eraser</button> -->
-    <div>
-      <button type="submit" class='drawBtn' id='smallLn'>S</button>
-      <button type="submit" class='drawBtn' id='mediumLn'>M</button>
-      <button type="submit" class='drawBtn' id='largeLn'>L</button>
-      <button type="submit" class='drawBtn' id='xlargeLn'>XL</button>
+    <div class="size-btns">
+      <!-- <circle cx="13" cy="13" r="1"></circle> -->
+      <button class='drawBtn' id='smallLn'><i class="fa fa-circle"></i></button>
+      <button class='drawBtn' id='mediumLn'><i class="fa fa-circle"></i></button>
+      <button class='drawBtn' id='largeLn'><i class="fa fa-circle"></i></button>
+      <button class='drawBtn' id='xlargeLn'><i class="fa fa-circle"></i></button>
     </div>
     <!-- </select> -->
   </div>
-    <canvas id="canvas" width="500" height="650"></canvas>
+    <canvas id="canvas" width="501" height="661"></canvas>
     <script src="./app/bundle.js"></script>
     
   <!-- <button type="submit" class='drawBtn' id='line'></button> -->
   
 </body>
 <footer>
-  <br>
-  <p>
-    Julie Bock 2020
-  </p>
+
+  <div class="contact-info">
+    <div class="contact-boxes">
+      <a target=”_blank” href="https://github.com/juliesbock"><i class="fab fa-github-square"></i></a>
+      <a target=”_blank” href="https://www.linkedin.com/in/julie-bock-009b6139/"><i class="fab fa-linkedin"></i></a>
+      <a target=”_blank” href="https://www.instagram.com/geometricjules/"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="sign-off">
+      Julie Bock © 2020
+    </div>
+    <div></div>
+  </div>
 </footer>
 </html>
