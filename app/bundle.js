@@ -113,30 +113,30 @@ var half = dotDist / 2;
 var ctx = canvas.getContext('2d');
 document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('canvas');
-  Object(_tools_grid__WEBPACK_IMPORTED_MODULE_2__["getGridPoints"])(); // let mode = 'line';
-  // if (mode === 'line') { 
+  Object(_tools_grid__WEBPACK_IMPORTED_MODULE_2__["getGridPoints"])(); // drawBorder();
+  // let mode = 'line';
 
   canvas.addEventListener('mousedown', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragStartLine"], false);
   canvas.addEventListener('mousemove', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragLine"], false);
   canvas.addEventListener('mouseup', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragStopLine"], false);
   canvas.addEventListener('mouseleave', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragStopLine"], false);
-  canvas.addEventListener('dblclick', _tools_circle__WEBPACK_IMPORTED_MODULE_1__["drawCircle"], false); // }
-  // const draw = (e) => {
+  canvas.addEventListener('dblclick', _tools_circle__WEBPACK_IMPORTED_MODULE_1__["drawCircle"], false); // const draw = (e) => {
   //   switch (mode) {
   //     case 'line':
-  //       console.log('line drawin')
-  //       dragStartLine(e);
+  //       console.log('line')
+  //       // dragStartLine(e);
   //       break;
   //     case 'eraser':
-  //       erase;
+  //       console.log('eraser')
   //       break;
   //     default:
-  //       dragStartLine;
+  //       console.log('somethingElse')
+  //       // dragStartLine;
   //       break;
   //   };
   // };
   // if (mode === 'eraser') {
-  //   console.log('wooohoo')
+  //   console.log('eraser')
   //   // ctx.strokeStyle = 'whitesmoke';
   //   // canvas.addEventListener('mousedown', dragStartEraser, false);
   //   // canvas.addEventListener('mousemove', dragEraser, false);
@@ -162,13 +162,15 @@ document.addEventListener('DOMContentLoaded', function () {
   var xLargeLine = document.getElementById("xlargeLn");
   xLargeLine.addEventListener('click', function () {
     ctx.lineWidth = 10;
-  }); // ctx.lineWidth = radius;
-  // const minRad = 0.5;
-  // const maxRad = 100;
-  // const defaultRad = 20;
-  // const interval = 5;
-  // const radSpan = document.getElementById('radval');
-  // var setRadius = (newRadius) => {
+  }); //save functionality 
+
+  var saveBtn = document.getElementById('downloadBtn');
+  saveBtn.addEventListener('click', download, false);
+
+  function download() {
+    // saveBtn.download = "image.png";
+    saveBtn.href = canvas.toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+  } // var setRadius = (newRadius) => {
   //   if (newRadius < minRad)
   //     newRadius = minRad
   //   else if (newRadius > maxRad)
@@ -207,6 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // const lineEle = document.getElementById('line');
   // circleEle.addEventListener("click", circleClick, true);
   // lineEle.addEventListener("click", lineClick, true);
+
 }); // document.addEventListener('load', init);
 
 /***/ }),
@@ -352,7 +355,8 @@ var getCoords = function getCoords(e) {
     x: x,
     y: y
   };
-};
+}; // export const drawBorder = () => {
+// }
 
 /***/ })
 

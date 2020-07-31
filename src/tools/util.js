@@ -4,3 +4,7 @@ export const getCoords = (e) => {
 
   return { x: x, y: y }
 }
+
+// export const drawBorder = () => {
+
+// }

@@ -1,4 +1,4 @@
-import {getCoords} from "./tools/util";
+import { getCoords, drawBorder} from "./tools/util";
 import {drawCircle} from "./tools/circle";
 import {getGridPoints} from "./tools/grid";
 import { dragStartLine, dragLine, dragStopLine} from "./tools/line";
@@ -12,34 +12,33 @@ export const ctx = canvas.getContext('2d');
 document.addEventListener('DOMContentLoaded', () => {  
   const canvas = document.getElementById('canvas');
   getGridPoints();
-
+  // drawBorder();
   // let mode = 'line';
 
-  // if (mode === 'line') { 
   canvas.addEventListener('mousedown', dragStartLine, false);
   canvas.addEventListener('mousemove', dragLine, false);
   canvas.addEventListener('mouseup', dragStopLine, false);
   canvas.addEventListener('mouseleave', dragStopLine, false);
   canvas.addEventListener('dblclick', drawCircle, false);
-  // }
 
   // const draw = (e) => {
   //   switch (mode) {
   //     case 'line':
-  //       console.log('line drawin')
-  //       dragStartLine(e);
+  //       console.log('line')
+  //       // dragStartLine(e);
   //       break;
   //     case 'eraser':
-  //       erase;
+  //       console.log('eraser')
   //       break;
   //     default:
-  //       dragStartLine;
+  //       console.log('somethingElse')
+  //       // dragStartLine;
   //       break;
   //   };
   // };
 
   // if (mode === 'eraser') {
-  //   console.log('wooohoo')
+  //   console.log('eraser')
   //   // ctx.strokeStyle = 'whitesmoke';
   //   // canvas.addEventListener('mousedown', dragStartEraser, false);
   //   // canvas.addEventListener('mousemove', dragEraser, false);
@@ -71,12 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.lineWidth = 10;
   });
 
-  // ctx.lineWidth = radius;
-  // const minRad = 0.5;
-  // const maxRad = 100;
-  // const defaultRad = 20;
-  // const interval = 5;
-  // const radSpan = document.getElementById('radval');
+  //save functionality 
+  const saveBtn = document.getElementById('downloadBtn')
+  saveBtn.addEventListener('click', download, false);
+
+  function download() {
+    // saveBtn.download = "image.png";
+    saveBtn.href = canvas.toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+  }
 
   // var setRadius = (newRadius) => {
   //   if (newRadius < minRad)
