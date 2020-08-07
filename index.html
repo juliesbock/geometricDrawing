@@ -31,22 +31,28 @@
       <!-- <button type="submit" class='drawBtn' id='circle'>Circle</button> -->
       <!-- <button type="submit" class='drawBtn' id='eraser'>Eraser</button> -->
     <div class="size-btns">
-      <!-- <circle cx="13" cy="13" r="1"></circle> -->
       <button class='drawBtn' id='smallLn'><i class="fa fa-circle"></i></button>
       <button class='drawBtn' id='mediumLn'><i class="fa fa-circle"></i></button>
       <button class='drawBtn' id='largeLn'><i class="fa fa-circle"></i></button>
       <button class='drawBtn' id='xlargeLn'><i class="fa fa-circle"></i></button>
-      <button>
-        <a href="#" class='drawBtn' id="downloadBtn" download="image.png">
-          <i class="fa fa-save"></i>
-        </a>
-      </button>
     </div>
 
-    <!-- </select> -->
   </div>
+  <div class="canvas-swatch-box">
     <canvas id="canvas" width="501" height="661"></canvas>
     <script src="./app/bundle.js"></script>
+    <div class="color-swatch">
+      <span class='color-btn' id='color1'></span>
+      <span class='color-btn' id='color2'></span>
+      <span class='color-btn' id='color3'></span>
+      <span class='color-btn' id='color4'></span>
+      <span class='color-btn' id='color5'></span>
+      <span class='color-btn' id='color6'></span>
+      <a href="#" class='color-btn drawBtn' id="downloadBtn" download="image.png">
+        <i class="fa fa-save"></i>
+      </a>
+    </div>
+  </div>
     
   
 </body>

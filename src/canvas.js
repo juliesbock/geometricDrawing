@@ -1,4 +1,4 @@
-import { getCoords, drawBorder} from "./tools/util";
+import {getCoords, drawBorder} from "./tools/util";
 import {drawCircle} from "./tools/circle";
 import {getGridPoints} from "./tools/grid";
 import { dragStartLine, dragLine, dragStopLine} from "./tools/line";
@@ -12,7 +12,7 @@ export const ctx = canvas.getContext('2d');
 document.addEventListener('DOMContentLoaded', () => {  
   const canvas = document.getElementById('canvas');
   getGridPoints();
-  // drawBorder();
+  drawBorder(ctx);
   // let mode = 'line';
 
   canvas.addEventListener('mousedown', dragStartLine, false);
@@ -21,33 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.addEventListener('mouseleave', dragStopLine, false);
   canvas.addEventListener('dblclick', drawCircle, false);
 
-  // const draw = (e) => {
-  //   switch (mode) {
-  //     case 'line':
-  //       console.log('line')
-  //       // dragStartLine(e);
-  //       break;
-  //     case 'eraser':
-  //       console.log('eraser')
-  //       break;
-  //     default:
-  //       console.log('somethingElse')
-  //       // dragStartLine;
-  //       break;
-  //   };
-  // };
-
-  // if (mode === 'eraser') {
-  //   console.log('eraser')
-  //   // ctx.strokeStyle = 'whitesmoke';
-  //   // canvas.addEventListener('mousedown', dragStartEraser, false);
-  //   // canvas.addEventListener('mousemove', dragEraser, false);
-  //   // canvas.addEventListener('mouseup', dragStopEraser, false);
-  //   // canvas.addEventListener('mouseleave', dragStopEraser, false);
-  //   // canvas.addEventListener('dblclick', null, false);
-  // }
-
-
   // TOOLBAR COMMANDS
   // buttons for line thickness
   const smallLine = document.getElementById("smallLn");
@@ -55,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.lineWidth = 1;
   });
 
-  const medLine = document.getElementById("mediumLn");
-  medLine.addEventListener('click', () => {
+  const mediumLine = document.getElementById("mediumLn");
+  mediumLine.addEventListener('click', () => {
     ctx.lineWidth = 3;
   });
 
@@ -75,9 +48,27 @@ document.addEventListener('DOMContentLoaded', () => {
   saveBtn.addEventListener('click', download, false);
 
   function download() {
-    // saveBtn.download = "image.png";
-    saveBtn.href = canvas.toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+    drawBorder(ctx);
+    saveBtn.href = canvas
+      .toDataURL("image/png")
+      .replace(/^data:image\/[^;]/, 'data:application/octet-stream');
   }
+
+  const that = ctx;;
+  const color1 = document.getElementById("color1")
+  const color2 = document.getElementById("color2")
+  const color3 = document.getElementById("color3")
+  const color4 = document.getElementById("color4")
+  const color5 = document.getElementById("color5")
+  const color6 = document.getElementById("color6")
+
+  color1.addEventListener('click', () => ctx.strokeStyle = '#D64045');
+  color2.addEventListener('click', () => ctx.strokeStyle = '#EA9010');
+  color3.addEventListener('click', () => ctx.strokeStyle = '#B7EA1F');
+  color4.addEventListener('click', () => ctx.strokeStyle = '#7785AC');
+  color5.addEventListener('click', () => ctx.strokeStyle = '#6A2567');
+  color6.addEventListener('click', () => ctx.strokeStyle = '#000000');
+
 
   // var setRadius = (newRadius) => {
   //   if (newRadius < minRad)
@@ -121,8 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //   mode = 'line';
   // });
 
-  
-
 
   // const circleEle = document.getElementById('circle');
   // const lineEle = document.getElementById('line');
@@ -133,3 +122,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // document.addEventListener('load', init);
+
+
+  // const draw = (e) => {
+  //   switch (mode) {
+  //     case 'line':
+  //       console.log('line')
+  //       // dragStartLine(e);
+  //       break;
+  //     case 'eraser':
+  //       console.log('eraser')
+  //       break;
+  //     default:
+  //       console.log('somethingElse')
+  //       // dragStartLine;
+  //       break;
+  //   };
+  // };
+
+  // if (mode === 'eraser') {
+  //   console.log('eraser')
+  //   // ctx.strokeStyle = 'whitesmoke';
+  //   // canvas.addEventListener('mousedown', dragStartEraser, false);
+  //   // canvas.addEventListener('mousemove', dragEraser, false);
+  //   // canvas.addEventListener('mouseup', dragStopEraser, false);
+  //   // canvas.addEventListener('mouseleave', dragStopEraser, false);
+  //   // canvas.addEventListener('dblclick', null, false);
+  // }

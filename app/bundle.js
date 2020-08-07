@@ -113,46 +113,22 @@ var half = dotDist / 2;
 var ctx = canvas.getContext('2d');
 document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('canvas');
-  Object(_tools_grid__WEBPACK_IMPORTED_MODULE_2__["getGridPoints"])(); // drawBorder();
-  // let mode = 'line';
+  Object(_tools_grid__WEBPACK_IMPORTED_MODULE_2__["getGridPoints"])();
+  Object(_tools_util__WEBPACK_IMPORTED_MODULE_0__["drawBorder"])(ctx); // let mode = 'line';
 
   canvas.addEventListener('mousedown', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragStartLine"], false);
   canvas.addEventListener('mousemove', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragLine"], false);
   canvas.addEventListener('mouseup', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragStopLine"], false);
   canvas.addEventListener('mouseleave', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragStopLine"], false);
-  canvas.addEventListener('dblclick', _tools_circle__WEBPACK_IMPORTED_MODULE_1__["drawCircle"], false); // const draw = (e) => {
-  //   switch (mode) {
-  //     case 'line':
-  //       console.log('line')
-  //       // dragStartLine(e);
-  //       break;
-  //     case 'eraser':
-  //       console.log('eraser')
-  //       break;
-  //     default:
-  //       console.log('somethingElse')
-  //       // dragStartLine;
-  //       break;
-  //   };
-  // };
-  // if (mode === 'eraser') {
-  //   console.log('eraser')
-  //   // ctx.strokeStyle = 'whitesmoke';
-  //   // canvas.addEventListener('mousedown', dragStartEraser, false);
-  //   // canvas.addEventListener('mousemove', dragEraser, false);
-  //   // canvas.addEventListener('mouseup', dragStopEraser, false);
-  //   // canvas.addEventListener('mouseleave', dragStopEraser, false);
-  //   // canvas.addEventListener('dblclick', null, false);
-  // }
-  // TOOLBAR COMMANDS
+  canvas.addEventListener('dblclick', _tools_circle__WEBPACK_IMPORTED_MODULE_1__["drawCircle"], false); // TOOLBAR COMMANDS
   // buttons for line thickness
 
   var smallLine = document.getElementById("smallLn");
   smallLine.addEventListener('click', function () {
     ctx.lineWidth = 1;
   });
-  var medLine = document.getElementById("mediumLn");
-  medLine.addEventListener('click', function () {
+  var mediumLine = document.getElementById("mediumLn");
+  mediumLine.addEventListener('click', function () {
     ctx.lineWidth = 3;
   });
   var largeLine = document.getElementById("largeLn");
@@ -168,9 +144,36 @@ document.addEventListener('DOMContentLoaded', function () {
   saveBtn.addEventListener('click', download, false);
 
   function download() {
-    // saveBtn.download = "image.png";
+    Object(_tools_util__WEBPACK_IMPORTED_MODULE_0__["drawBorder"])(ctx);
     saveBtn.href = canvas.toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-  } // var setRadius = (newRadius) => {
+  }
+
+  var that = ctx;
+  ;
+  var color1 = document.getElementById("color1");
+  var color2 = document.getElementById("color2");
+  var color3 = document.getElementById("color3");
+  var color4 = document.getElementById("color4");
+  var color5 = document.getElementById("color5");
+  var color6 = document.getElementById("color6");
+  color1.addEventListener('click', function () {
+    return ctx.strokeStyle = '#D64045';
+  });
+  color2.addEventListener('click', function () {
+    return ctx.strokeStyle = '#EA9010';
+  });
+  color3.addEventListener('click', function () {
+    return ctx.strokeStyle = '#B7EA1F';
+  });
+  color4.addEventListener('click', function () {
+    return ctx.strokeStyle = '#7785AC';
+  });
+  color5.addEventListener('click', function () {
+    return ctx.strokeStyle = '#6A2567';
+  });
+  color6.addEventListener('click', function () {
+    return ctx.strokeStyle = '#000000';
+  }); // var setRadius = (newRadius) => {
   //   if (newRadius < minRad)
   //     newRadius = minRad
   //   else if (newRadius > maxRad)
@@ -209,8 +212,31 @@ document.addEventListener('DOMContentLoaded', function () {
   // const lineEle = document.getElementById('line');
   // circleEle.addEventListener("click", circleClick, true);
   // lineEle.addEventListener("click", lineClick, true);
-
 }); // document.addEventListener('load', init);
+// const draw = (e) => {
+//   switch (mode) {
+//     case 'line':
+//       console.log('line')
+//       // dragStartLine(e);
+//       break;
+//     case 'eraser':
+//       console.log('eraser')
+//       break;
+//     default:
+//       console.log('somethingElse')
+//       // dragStartLine;
+//       break;
+//   };
+// };
+// if (mode === 'eraser') {
+//   console.log('eraser')
+//   // ctx.strokeStyle = 'whitesmoke';
+//   // canvas.addEventListener('mousedown', dragStartEraser, false);
+//   // canvas.addEventListener('mousemove', dragEraser, false);
+//   // canvas.addEventListener('mouseup', dragStopEraser, false);
+//   // canvas.addEventListener('mouseleave', dragStopEraser, false);
+//   // canvas.addEventListener('dblclick', null, false);
+// }
 
 /***/ }),
 
@@ -342,12 +368,14 @@ var drawLine = function drawLine(pos) {
 /*!***************************!*\
   !*** ./src/tools/util.js ***!
   \***************************/
-/*! exports provided: getCoords */
+/*! exports provided: getCoords, drawBorder, COLORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCoords", function() { return getCoords; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawBorder", function() { return drawBorder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COLORS", function() { return COLORS; });
 var getCoords = function getCoords(e) {
   var x = e.clientX - canvas.getBoundingClientRect().left;
   var y = e.clientY - canvas.getBoundingClientRect().top;
@@ -355,8 +383,26 @@ var getCoords = function getCoords(e) {
     x: x,
     y: y
   };
-}; // export const drawBorder = () => {
-// }
+};
+var drawBorder = function drawBorder(ctx) {
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = '#000000';
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(0, 661);
+  ctx.lineTo(501, 661);
+  ctx.lineTo(501, 0);
+  ctx.lineTo(0, 0);
+  ctx.stroke();
+};
+var COLORS = {
+  1: '#D64045',
+  2: '#EA9010',
+  3: '#B7EA1F',
+  4: '#7785AC',
+  5: '#6A2567',
+  6: '#000000'
+};
 
 /***/ })
 
