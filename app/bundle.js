@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var color4 = document.getElementById("color4");
   var color5 = document.getElementById("color5");
   var color6 = document.getElementById("color6");
+  var color7 = document.getElementById("color7");
   color1.addEventListener('click', function () {
     return ctx.strokeStyle = '#D64045';
   });
@@ -163,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return ctx.strokeStyle = '#EA9010';
   });
   color3.addEventListener('click', function () {
-    return ctx.strokeStyle = '#B7EA1F';
+    return ctx.strokeStyle = '#99C24D';
   });
   color4.addEventListener('click', function () {
     return ctx.strokeStyle = '#7785AC';
@@ -172,6 +173,9 @@ document.addEventListener('DOMContentLoaded', function () {
     return ctx.strokeStyle = '#6A2567';
   });
   color6.addEventListener('click', function () {
+    return ctx.strokeStyle = '#eeeeee';
+  });
+  color7.addEventListener('click', function () {
     return ctx.strokeStyle = '#000000';
   }); // var setRadius = (newRadius) => {
   //   if (newRadius < minRad)
@@ -282,6 +286,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../canvas */ "./src/canvas.js");
 
 var getGridPoints = function getGridPoints() {
+  drawBackgound();
   var pointsArr = []; //get all points
 
   for (var x = 0; x < canvas.width; x += _canvas__WEBPACK_IMPORTED_MODULE_0__["dotDist"]) {
@@ -291,13 +296,18 @@ var getGridPoints = function getGridPoints() {
   } //plot all points to make grid
 
 
+  _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].strokeStyle = 'gray';
   pointsArr.forEach(function (pos) {
     _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].beginPath();
     _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].arc(pos[0], pos[1], .5, 0, 2 * Math.PI, true);
-    _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].strokeStyle = 'gray';
     _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].stroke();
-    _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].strokeStyle = 'black';
   });
+  _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].strokeStyle = 'black';
+};
+
+var drawBackgound = function drawBackgound() {
+  _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].fillStyle = '#eeeeee';
+  _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].fillRect(0, 0, canvas.width - 99, canvas.height);
 };
 
 /***/ }),
@@ -368,14 +378,13 @@ var drawLine = function drawLine(pos) {
 /*!***************************!*\
   !*** ./src/tools/util.js ***!
   \***************************/
-/*! exports provided: getCoords, drawBorder, COLORS */
+/*! exports provided: getCoords, drawBorder */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCoords", function() { return getCoords; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "drawBorder", function() { return drawBorder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COLORS", function() { return COLORS; });
 var getCoords = function getCoords(e) {
   var x = e.clientX - canvas.getBoundingClientRect().left;
   var y = e.clientY - canvas.getBoundingClientRect().top;
@@ -385,6 +394,8 @@ var getCoords = function getCoords(e) {
   };
 };
 var drawBorder = function drawBorder(ctx) {
+  var holdColor = ctx.strokeStyle;
+  var holdWidth = ctx.lineWidth;
   ctx.lineWidth = 1;
   ctx.strokeStyle = '#000000';
   ctx.beginPath();
@@ -394,15 +405,16 @@ var drawBorder = function drawBorder(ctx) {
   ctx.lineTo(501, 0);
   ctx.lineTo(0, 0);
   ctx.stroke();
-};
-var COLORS = {
-  1: '#D64045',
-  2: '#EA9010',
-  3: '#B7EA1F',
-  4: '#7785AC',
-  5: '#6A2567',
-  6: '#000000'
-};
+  ctx.strokeStyle = holdColor;
+  ctx.lineWidth = holdWidth;
+}; // export const COLORS = {
+//   1: '#D64045',
+//   2: '#EA9010',
+//   3: '#99C24D',
+//   4: '#7785AC',
+//   5: '#6A2567',
+//   6: '#000000'
+// }
 
 /***/ })
 

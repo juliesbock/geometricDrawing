@@ -1,6 +1,7 @@
 import { dotDist, half, ctx } from "../canvas";
 
 export const getGridPoints = () => {
+  drawBackgound();
   const pointsArr = [];
 
   //get all points
@@ -11,12 +12,19 @@ export const getGridPoints = () => {
   }
 
   //plot all points to make grid
+  ctx.strokeStyle = 'gray';
+
   pointsArr.forEach(pos => {
     ctx.beginPath();
     ctx.arc(pos[0], pos[1], .5, 0, 2 * Math.PI, true);
-    ctx.strokeStyle = 'gray';
     ctx.stroke();
-    ctx.strokeStyle = 'black';
   })
+
+  ctx.strokeStyle = 'black';
+}
+
+const drawBackgound = () => {
+  ctx.fillStyle = '#eeeeee';
+  ctx.fillRect(0, 0, canvas.width - 99, canvas.height);
 }
 

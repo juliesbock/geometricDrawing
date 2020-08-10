@@ -61,13 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const color4 = document.getElementById("color4")
   const color5 = document.getElementById("color5")
   const color6 = document.getElementById("color6")
+  const color7 = document.getElementById("color7")
 
   color1.addEventListener('click', () => ctx.strokeStyle = '#D64045');
   color2.addEventListener('click', () => ctx.strokeStyle = '#EA9010');
-  color3.addEventListener('click', () => ctx.strokeStyle = '#B7EA1F');
+  color3.addEventListener('click', () => ctx.strokeStyle = '#99C24D');
   color4.addEventListener('click', () => ctx.strokeStyle = '#7785AC');
   color5.addEventListener('click', () => ctx.strokeStyle = '#6A2567');
-  color6.addEventListener('click', () => ctx.strokeStyle = '#000000');
+  color6.addEventListener('click', () => ctx.strokeStyle = '#eeeeee');
+  color7.addEventListener('click', () => ctx.strokeStyle = '#000000');
 
 
   // var setRadius = (newRadius) => {
