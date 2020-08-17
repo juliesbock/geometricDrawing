@@ -10,3 +10,5 @@ export const erase = () => {
   ctx.stroke();
   ctx.closePath();
 }
+
+let a = []
