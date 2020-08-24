@@ -20,12 +20,3 @@ export const drawBorder = (ctx) => {
   ctx.strokeStyle = holdColor;
   ctx.lineWidth = holdWidth;
 }
-
-// export const COLORS = {
-//   1: '#D64045',
-//   2: '#EA9010',
-//   3: '#99C24D',
-//   4: '#7785AC',
-//   5: '#6A2567',
-//   6: '#000000'
-// }
