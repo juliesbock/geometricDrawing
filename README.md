@@ -1,54 +1,19 @@
 # Geometric Art
 
-This is an app that allows users to make and save grid drawings online. This
-web app uses minimalistic design to 
+Geometric Art is an app that allows users to make and save drawings online. Unlike most drawing platforms, this web app allows users to draw only on a strict grid. This allows folks who are more linear-minded or left-brained to enjoy creating geometric art.
 
-## Summary
+## Features 
 
-## Getting Started
+Geometric Art runs on HTML5 Canvas and Javascript. It includes algorithms to adapt user actions to a strict grid pattern. The application is interactive in realtime through the use of event listeners and image capture functionality. Files are modularized by implementing Webpack and Node Modules (npm).
 
-These instructions will get you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on how to deploy the project on a live system.
+## Future Features 
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-    Give examples
-
-### Installing
-
-A step by step series of examples that tell you how to get a development
-env running
-
-Say what the step will be
-
-    Give the example
-
-And repeat
-
-    until finished
-
-End with an example of getting some data out of the system or using it
-for a little demo
-
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-    Give an example
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+  - Adjustable size circles
+  - Variable line types (dashed, dotted, etc)
+  - Undo and redo capability
+  - Cleaner eraser functionality 
 
 ## Authors
 
-  - [**Julie Bock**](https://github.com/juliesbock)
-
-See also the list of
-[contributors](https://github.com/PurpleBooth/a-good-readme-template/contributors)
-who participated in this project.
-
+  - Live Site: [**Geometric Art**](https://juliesbock.github.io/geometricdrawing/)
+  - Author: [**Julie Bock**](https://github.com/juliesbock)
