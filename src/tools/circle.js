@@ -9,7 +9,7 @@ export const drawCircle = (e) => {
 
   ctx.beginPath(); // necessary to begin drawing this path
   ctx.arc(pos.x, pos.y, dotDist, 0, 2 * Math.PI);
-  // ctx.strokeStyle = "red"; // optionally sets color of path
+
   ctx.stroke(); // draws path (default color is black)
   ctx.closePath(); // optional when drawing a circle
 }

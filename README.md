@@ -6,6 +6,20 @@ Geometric Art is an app that allows users to make and save drawings online. Unli
 
 Geometric Art runs on HTML5 Canvas and Javascript. It includes algorithms to adapt user actions to a strict grid pattern. The application is interactive in realtime through the use of event listeners and image capture functionality. Files are modularized by implementing Webpack and Node Modules (npm).
 
+## To Run Locally
+
+Install Node Modules
+
+    npm install
+
+Start webpack to watch the files
+
+    npm start
+
+In a new terminal launch application in your browser
+
+    open index.html
+
 ## Future Features 
 
   - Adjustable size circles
@@ -13,7 +27,10 @@ Geometric Art runs on HTML5 Canvas and Javascript. It includes algorithms to ada
   - Undo and redo capability
   - Cleaner eraser functionality 
 
-## Authors
 
-  - Live Site: [**Geometric Art**](https://juliesbock.github.io/geometricdrawing/)
-  - Author: [**Julie Bock**](https://github.com/juliesbock)
+## Details
+
+  - Live Site: [Geometric Art](https://juliesbock.github.io/geometricdrawing/)
+  - GitHub Repository: [GitHub](https://github.com/juliesbock/geometricdrawing/)
+  - Inspirted by: [Geometric Jules](http://instagram.com/geometricjulies)
+  - Author: [Julie Bock](https://github.com/juliesbock)

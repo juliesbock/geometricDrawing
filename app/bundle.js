@@ -177,70 +177,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   color7.addEventListener('click', function () {
     return ctx.strokeStyle = '#000000';
-  }); // var setRadius = (newRadius) => {
-  //   if (newRadius < minRad)
-  //     newRadius = minRad
-  //   else if (newRadius > maxRad)
-  //     newRadius = maxRad;
-  //   radius = newRadius;
-  //   context.lineWidth = radius * 2;
-  //   radSpan.innerHTML = radius;
-  // }
-  // // Decrease radius of drawing tool
-  // const decRad = document.getElementById('decrad');
-  // decRad.addEventListener('click', () => {
-  //   console.log('minus')
-  //   setRadius(radius - interval);
-  // });
-  // // Increase radius of drawing tool
-  // const incRad = document.getElementById('incrad');
-  // incRad.addEventListener('click', () => {
-  //   console.log('plusss')
-  //   if (radius % 1 !== 0) {
-  //     setRadius(parseInt(radius) + interval);
-  //   } else {
-  //     setRadius(radius + interval);
-  //   }
-  // });
-  //tools
-  // const eraser = document.getElementById('eraser');
-  // eraser.addEventListener('click', () => {
-  //   mode = 'eraser';
-  //   console.log('erasin')
-  // });
-  // const line = document.getElementById('line');
-  // line.addEventListener('click', () => {
-  //   mode = 'line';
-  // });
-  // const circleEle = document.getElementById('circle');
-  // const lineEle = document.getElementById('line');
-  // circleEle.addEventListener("click", circleClick, true);
-  // lineEle.addEventListener("click", lineClick, true);
-}); // document.addEventListener('load', init);
-// const draw = (e) => {
-//   switch (mode) {
-//     case 'line':
-//       console.log('line')
-//       // dragStartLine(e);
-//       break;
-//     case 'eraser':
-//       console.log('eraser')
-//       break;
-//     default:
-//       console.log('somethingElse')
-//       // dragStartLine;
-//       break;
-//   };
-// };
-// if (mode === 'eraser') {
-//   console.log('eraser')
-//   // ctx.strokeStyle = 'whitesmoke';
-//   // canvas.addEventListener('mousedown', dragStartEraser, false);
-//   // canvas.addEventListener('mousemove', dragEraser, false);
-//   // canvas.addEventListener('mouseup', dragStopEraser, false);
-//   // canvas.addEventListener('mouseleave', dragStopEraser, false);
-//   // canvas.addEventListener('dblclick', null, false);
-// }
+  });
+});
 
 /***/ }),
 
@@ -264,8 +202,7 @@ var drawCircle = function drawCircle(e) {
   pos.y = Math.round(pos.y / _canvas__WEBPACK_IMPORTED_MODULE_1__["half"]) * _canvas__WEBPACK_IMPORTED_MODULE_1__["half"];
   _canvas__WEBPACK_IMPORTED_MODULE_1__["ctx"].beginPath(); // necessary to begin drawing this path
 
-  _canvas__WEBPACK_IMPORTED_MODULE_1__["ctx"].arc(pos.x, pos.y, _canvas__WEBPACK_IMPORTED_MODULE_1__["dotDist"], 0, 2 * Math.PI); // ctx.strokeStyle = "red"; // optionally sets color of path
-
+  _canvas__WEBPACK_IMPORTED_MODULE_1__["ctx"].arc(pos.x, pos.y, _canvas__WEBPACK_IMPORTED_MODULE_1__["dotDist"], 0, 2 * Math.PI);
   _canvas__WEBPACK_IMPORTED_MODULE_1__["ctx"].stroke(); // draws path (default color is black)
 
   _canvas__WEBPACK_IMPORTED_MODULE_1__["ctx"].closePath(); // optional when drawing a circle
@@ -407,14 +344,7 @@ var drawBorder = function drawBorder(ctx) {
   ctx.stroke();
   ctx.strokeStyle = holdColor;
   ctx.lineWidth = holdWidth;
-}; // export const COLORS = {
-//   1: '#D64045',
-//   2: '#EA9010',
-//   3: '#99C24D',
-//   4: '#7785AC',
-//   5: '#6A2567',
-//   6: '#000000'
-// }
+};
 
 /***/ })
 
