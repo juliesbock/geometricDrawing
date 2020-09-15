@@ -113,8 +113,8 @@ var half = dotDist / 2;
 var ctx = canvas.getContext('2d');
 document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('canvas');
-  Object(_tools_grid__WEBPACK_IMPORTED_MODULE_2__["getGridPoints"])();
-  Object(_tools_util__WEBPACK_IMPORTED_MODULE_0__["drawBorder"])(ctx); // let mode = 'line';
+  Object(_tools_grid__WEBPACK_IMPORTED_MODULE_2__["getGridPoints"])(); // drawBorder(ctx);
+  // let mode = 'line';
 
   canvas.addEventListener('mousedown', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragStartLine"], false);
   canvas.addEventListener('mousemove', _tools_line__WEBPACK_IMPORTED_MODULE_3__["dragLine"], false);

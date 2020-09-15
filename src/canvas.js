@@ -12,7 +12,7 @@ export const ctx = canvas.getContext('2d');
 document.addEventListener('DOMContentLoaded', () => {  
   const canvas = document.getElementById('canvas');
   getGridPoints();
-  drawBorder(ctx);
+  // drawBorder(ctx);
   // let mode = 'line';
 
   canvas.addEventListener('mousedown', dragStartLine, false);
