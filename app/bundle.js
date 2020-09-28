@@ -307,7 +307,7 @@ var getGridPoints = function getGridPoints() {
 
 var drawBackgound = function drawBackgound() {
   _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].fillStyle = '#eeeeee';
-  _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].fillRect(0, 0, canvas.width - 99, canvas.height);
+  _canvas__WEBPACK_IMPORTED_MODULE_0__["ctx"].fillRect(0, 0, canvas.width, canvas.height);
 };
 
 /***/ }),

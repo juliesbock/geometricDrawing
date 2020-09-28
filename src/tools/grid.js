@@ -25,6 +25,6 @@ export const getGridPoints = () => {
 
 const drawBackgound = () => {
   ctx.fillStyle = '#eeeeee';
-  ctx.fillRect(0, 0, canvas.width - 99, canvas.height);
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 

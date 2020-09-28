@@ -13,3 +13,4 @@ export const drawCircle = (e) => {
   ctx.stroke(); // draws path (default color is black)
   ctx.closePath(); // optional when drawing a circle
 }
+
