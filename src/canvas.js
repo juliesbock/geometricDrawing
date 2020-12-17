@@ -23,24 +23,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // TOOLBAR COMMANDS
   // buttons for line thickness
+  
   const smallLine = document.getElementById("smallLn");
   smallLine.addEventListener('click', () =>{
     ctx.lineWidth = 1;
+    addCheckmark(smallLine, 'size', "●")
   });
 
   const mediumLine = document.getElementById("mediumLn");
   mediumLine.addEventListener('click', () => {
     ctx.lineWidth = 3;
+    addCheckmark(mediumLine,'size', "●")
   });
 
   const largeLine = document.getElementById("largeLn");
   largeLine.addEventListener('click', () => {
     ctx.lineWidth = 5;
+    addCheckmark(largeLine, 'size', "●")
   });
 
   const xLargeLine = document.getElementById("xlargeLn");
   xLargeLine.addEventListener('click', () => {
     ctx.lineWidth = 10;
+    addCheckmark(xLargeLine, 'size', "●")
   });
 
   //save functionality 
@@ -54,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/^data:image\/[^;]/, 'data:application/octet-stream');
   }
 
-  const that = ctx;;
+  // const that = ctx;;
   const color1 = document.getElementById("color1")
   const color2 = document.getElementById("color2")
   const color3 = document.getElementById("color3")
@@ -63,13 +68,49 @@ document.addEventListener('DOMContentLoaded', () => {
   const color6 = document.getElementById("color6")
   const color7 = document.getElementById("color7")
 
-  color1.addEventListener('click', () => ctx.strokeStyle = '#D64045');
-  color2.addEventListener('click', () => ctx.strokeStyle = '#EA9010');
-  color3.addEventListener('click', () => ctx.strokeStyle = '#99C24D');
-  color4.addEventListener('click', () => ctx.strokeStyle = '#7785AC');
-  color5.addEventListener('click', () => ctx.strokeStyle = '#6A2567');
-  color6.addEventListener('click', () => ctx.strokeStyle = '#eeeeee');
-  color7.addEventListener('click', () => ctx.strokeStyle = '#000000');
+  color1.addEventListener('click', () => {
+    ctx.strokeStyle = '#D64045'
+    addCheckmark(color1, 'colors')
+  });
+  color2.addEventListener('click', () => {
+    ctx.strokeStyle = '#EA9010'
+    addCheckmark(color2, 'colors')
+  });
+  color3.addEventListener('click', () => {
+    ctx.strokeStyle = '#99C24D'
+    addCheckmark(color3, 'colors')
+  });
+  color4.addEventListener('click', () => {
+    ctx.strokeStyle = '#7785AC'
+    addCheckmark(color4, 'colors')
+  });
+  color5.addEventListener('click', () => {
+    ctx.strokeStyle = '#6A2567'
+    addCheckmark(color5, 'colors')
+  });
+  color6.addEventListener('click', () => {
+    ctx.strokeStyle = '#eeeeee'
+    addCheckmark(color6, 'colors')
+  });
+  color7.addEventListener('click', () => {
+    ctx.strokeStyle = '#000000'
+    addCheckmark(color7, 'colors')
+  });
+
+  const addCheckmark = (targetEle, type, replacementText = "") => {
+    let selectedEles = [color1, color2, color3, color4, color5, color6, color7]
+    if (type == "size") selectedEles = [smallLine, mediumLine,largeLine,xLargeLine]
+    
+    selectedEles.forEach (ele => {
+      if (ele !== targetEle) {
+        ele.classList.remove('with-checkmark')
+        if (ele.innerHTML.includes('✔')) ele.innerHTML = replacementText
+      } else {
+        ele.innerHTML = '✔'
+        ele.classList.add('with-checkmark')
+      }
+    })
+  }
 
 
   // var setRadius = (newRadius) => {

@@ -126,18 +126,22 @@ document.addEventListener('DOMContentLoaded', function () {
   var smallLine = document.getElementById("smallLn");
   smallLine.addEventListener('click', function () {
     ctx.lineWidth = 1;
+    addCheckmark(smallLine, 'size', "●");
   });
   var mediumLine = document.getElementById("mediumLn");
   mediumLine.addEventListener('click', function () {
     ctx.lineWidth = 3;
+    addCheckmark(mediumLine, 'size', "●");
   });
   var largeLine = document.getElementById("largeLn");
   largeLine.addEventListener('click', function () {
     ctx.lineWidth = 5;
+    addCheckmark(largeLine, 'size', "●");
   });
   var xLargeLine = document.getElementById("xlargeLn");
   xLargeLine.addEventListener('click', function () {
     ctx.lineWidth = 10;
+    addCheckmark(xLargeLine, 'size', "●");
   }); //save functionality 
 
   var saveBtn = document.getElementById('downloadBtn');
@@ -146,10 +150,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function download() {
     Object(_tools_util__WEBPACK_IMPORTED_MODULE_0__["drawBorder"])(ctx);
     saveBtn.href = canvas.toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-  }
+  } // const that = ctx;;
 
-  var that = ctx;
-  ;
+
   var color1 = document.getElementById("color1");
   var color2 = document.getElementById("color2");
   var color3 = document.getElementById("color3");
@@ -158,26 +161,48 @@ document.addEventListener('DOMContentLoaded', function () {
   var color6 = document.getElementById("color6");
   var color7 = document.getElementById("color7");
   color1.addEventListener('click', function () {
-    return ctx.strokeStyle = '#D64045';
+    ctx.strokeStyle = '#D64045';
+    addCheckmark(color1, 'colors');
   });
   color2.addEventListener('click', function () {
-    return ctx.strokeStyle = '#EA9010';
+    ctx.strokeStyle = '#EA9010';
+    addCheckmark(color2, 'colors');
   });
   color3.addEventListener('click', function () {
-    return ctx.strokeStyle = '#99C24D';
+    ctx.strokeStyle = '#99C24D';
+    addCheckmark(color3, 'colors');
   });
   color4.addEventListener('click', function () {
-    return ctx.strokeStyle = '#7785AC';
+    ctx.strokeStyle = '#7785AC';
+    addCheckmark(color4, 'colors');
   });
   color5.addEventListener('click', function () {
-    return ctx.strokeStyle = '#6A2567';
+    ctx.strokeStyle = '#6A2567';
+    addCheckmark(color5, 'colors');
   });
   color6.addEventListener('click', function () {
-    return ctx.strokeStyle = '#eeeeee';
+    ctx.strokeStyle = '#eeeeee';
+    addCheckmark(color6, 'colors');
   });
   color7.addEventListener('click', function () {
-    return ctx.strokeStyle = '#000000';
-  }); // var setRadius = (newRadius) => {
+    ctx.strokeStyle = '#000000';
+    addCheckmark(color7, 'colors');
+  });
+
+  var addCheckmark = function addCheckmark(targetEle, type) {
+    var replacementText = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+    var selectedEles = [color1, color2, color3, color4, color5, color6, color7];
+    if (type == "size") selectedEles = [smallLine, mediumLine, largeLine, xLargeLine];
+    selectedEles.forEach(function (ele) {
+      if (ele !== targetEle) {
+        ele.classList.remove('with-checkmark');
+        if (ele.innerHTML.includes('✔')) ele.innerHTML = replacementText;
+      } else {
+        ele.innerHTML = '✔';
+        ele.classList.add('with-checkmark');
+      }
+    });
+  }; // var setRadius = (newRadius) => {
   //   if (newRadius < minRad)
   //     newRadius = minRad
   //   else if (newRadius > maxRad)
@@ -216,6 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // const lineEle = document.getElementById('line');
   // circleEle.addEventListener("click", circleClick, true);
   // lineEle.addEventListener("click", lineClick, true);
+
 }); // document.addEventListener('load', init);
 // const draw = (e) => {
 //   switch (mode) {

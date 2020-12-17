@@ -5,7 +5,6 @@ body {
   justify-content: center;
   font-family: Helvetica, Arial, sans-serif;
   min-height: 100vh;
-  /* margin: 15px; */
   background-color: #333;
 }
 
@@ -57,35 +56,35 @@ canvas {
   background-color: whitesmoke;
   border: 1px solid black;
   border-radius: 2px;
-  /* box-sizing: border-box; */
-  /* margin: 5px 3px 3px 3px; */
+  padding: 2px;
+
+  box-sizing: border-box;
 }
 
-#smallLn{
-  font-size: 3px;
-  line-height: 15px;
+.smallLn{
+  font-size: 6px;
+  line-height: 10px;
 }
 
-#mediumLn{
-  font-size: 5px;
-  line-height: 15px;
+.mediumLn{
+  font-size: 14px;
+  line-height: 10px;
 }
 
-#largeLn{
-  font-size: 8px;
-  line-height: 15px;
+.largeLn{
+  font-size: 22px;
+  line-height: 10px;
 }
 
-#xlargeLn{
-  font-size: 13px;
-  line-height: 15px;
+.xlargeLn{
+  font-size: 30px;
+  line-height: 10px;
 }
 
 #downloadBtn{
   color: black;
   text-align: center;
-  vertical-align: middle;
-  text-justify: center;
+  padding: 2px;
 }
 
 .sign-off {
@@ -119,7 +118,7 @@ canvas {
 #color4{background-color: #7785AC}
 #color5{background-color: #6A2567}
 #color6{background-color: #eeeeee}
-#color7{background-color: #000000}
+#color7{background-color: #000000; color: white}
 
 .color-btn{
   border: 1px solid black;
@@ -128,4 +127,9 @@ canvas {
   width: 20px;
   margin: 0;
   padding: 0;
+  cursor: pointer;
+}
+
+.with-checkmark{
+  font-size: 20px;
 }
